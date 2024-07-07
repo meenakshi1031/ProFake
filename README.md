@@ -1,2 +1,5 @@
 # ProFake
-Fake social media profile detection using machine learning and deep learning techniques
+Fake Social Media Profile Detection using Machine Learning and Deep Learning techniques
+ML: KNN
+DL: LSTM
+Platform: Instagram 
