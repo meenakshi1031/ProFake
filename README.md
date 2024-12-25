@@ -14,4 +14,4 @@ Deep Learning (LSTM):
 - LSTM Accuracy: 87.70% (variable due to random weight initialization, data shuffling, and stochastic optimization)
 
 Fusion of KNN and LSTM:
-Fusion Accuracy: 91.37% (fluctuates based on individual model performance(lstm) and fusion weights)
+- Fusion Accuracy: 91.37% (fluctuates based on individual model performance(lstm) and fusion weights)
