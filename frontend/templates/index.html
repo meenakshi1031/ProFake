@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>social media fake detection</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #03072A;
+        }
+
+        .background {
+            width: 430px;
+            height: 1420px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 20%;
+        }
+
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape:first-child {
+            background: linear-gradient(#1845ad,
+                    #23a2f6);
+            left: -180px;
+            top: 620px;
+        }
+        
+        
+        .shape:nth-child(2) {
+            background: linear-gradient(to right,
+                    #ff512f,
+                    #f09819);
+            right: -120px;
+            bottom: -750px;
+        }
+       
+        
+        .shape:nth-child(3) {
+            background: linear-gradient(#1845ad,
+                    #23a2f6);
+            left: -120px;
+            bottom: -300px;
+        }
+        
+        
+
+        .shape:last-child {
+            background: linear-gradient(to right,
+                    #ff512f,
+                    #f09819);
+            right: -120px;
+            bottom: 170px;
+        }
+
+        form {
+            height: 1420px;
+            width: 520px;
+            background-color: rgba(255, 255, 255, 0.13);
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 120%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 50px 35px;
+        }
+
+        form * {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        form h3 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        select option {
+  margin: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgb(243, 228, 12);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+        input,select{
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+            
+        }
+
+        ::placeholder {
+            color: #e5e5e5;
+        }
+
+        button {
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div>
+       <!-- <center>
+           <textarea>
+           </textarea>
+        </center> -->
+    </div>
+    <form action="/predict" , method="POST">
+        <div class="form-group"></div>
+        <label for="ProfilePicture">Profile Picture</label>
+        <!-- <input type="text" placeholder="Binary indicator (1 or 0)" id="profilepic" name="profilepic" required> -->
+        <select  id="profilepic" name="profilepic">
+            <option>YES</option>
+            <option>NO</option>
+          </select>
+        <label for="nctulr">Username</label>
+        <input type="text" placeholder=" enter username" id="nctulr" name="nctulr" required>
+
+        <label for="fnwc">Full Name </label>
+        <input type="text" placeholder="enter full name" id="fnwc"  name="fnwc" required>
+
+         <!-- <label for="nctfnlr">Numerical Characters to Full Name Length Ratio</label>
+        <input type="text" placeholder="ratio of numerical characters to length of name (0-1)" id="nctfnlr" name="nctfnlr"  required> -->
+
+        <!-- <label for="nmun">Name Matches Username</label>
+        <input type="text" placeholder="whether person's name matches their username(0 or 1)" id="nmun"  name="nmun" required> -->
+
+        <label for="dsl">Description </label>
+        <input type="text" placeholder="enter the profile description, likely the bio" id="dsl"  name="dsl">
+
+        <label for="urb">External URL in Bio</label>
+        <!-- <input type="text" placeholder="whether profile has a link to an external website(0 or 1)" id="urb" name="urb" required> -->
+        <select class="form-control" id="urb" name="urb">
+            <option>YES</option>
+            <option>NO</option>
+          </select>
+        <label for="pf">Private Profile</label>
+        <!-- <input type="text" placeholder="whether the profile is restricted (0 or 1)" id="pf" name="pf" required> -->
+        <select class="form-control" id="pf" name="pf">
+            <option>YES</option>
+            <option>NO</option>
+          </select>
+        <label for="nop">Number of Posts</label>
+        <input type="text" placeholder="total number of posts on the profile" id="nop" name="nop" required>
+
+        <label for="nof">Number of Followers</label>
+        <input type="text" placeholder="total number of followers for each account" id="nof" name="nof" required>
+
+        <label for="nofs">Number of Follows</label>
+        <input type="text" placeholder="total number of accounts that the user is following" id="nofs" name="nofs" required>
+
+        <button type="submit">Submit</button>
+    </div>
+       
+    </form>
+    <br>
+    <div>
+        <p>
+            @copyright
+        </p>
+    </div>
+</body>
+
+</html>

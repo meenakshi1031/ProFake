@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>social media fake detection</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap'><link rel="stylesheet" href="./static/style.css">
+
+</head>
+<body>
+
+<div class="card">
+        <div class="card-img">
+            <img src="../static/im.jpeg">
+        </div>
+        <div class="desc">
+            <h6 class="primary-text">PRO FAKE</h6>
+            <h6 class="secondary-text">fake profile detection</h6>
+        </div>
+        <a href="{{ url_for('predict') }}">
+            <button class="primary-text buttoncolor">Detect Fakes</button>
+        </a> 
+        
+        <div class="details">
+            <div class="rating">
+                <h8 class="primary-text"> 9-15% </h8>
+                <p class="secondary-text"> Instagram accounts are fake </p>
+            </div>
+            <div class="activity">
+                <h8 class="primary-text"> 5-15% </h8>
+                <p class="secondary-text"> considered inactive or spam </p>
+            </div>
+        </div>
+</div>
+<a href="{{ url_for('predict') }} " class="atag">
+   Fake-Profile Identification &nbsp;<i class="fa fa-youtube-play" aria-hidden="true"></i> 
+</a>
+
+  
+</body>
+</html>
