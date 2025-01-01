@@ -16,16 +16,16 @@ app = Flask(
 # Load the saved models
 knn_model = joblib.load(os.path.join(os.getcwd(), 'knn_model.pkl'))
 lstm_model = tf.keras.models.load_model(os.path.join(os.getcwd(), 'lstm_model.h5'))
-    
-def get_result(input_data,knn_model,lstm_model):
-  pbml = knn_model.predict_proba(input_data)
-  x_test = input_data.reshape((input_data.shape[0],1,input_data.shape[1]))
-  pbdl = lstm_model.predict(input_data)
-  wml = 0.45
-  wdl = 0.45
-  pb =  wml*pbml + wdl*pbdl 
-  pred = np.argmax(pb,axis=1)
-  return pred
+
+def get_result(input_data, knn_model, lstm_model):
+    pbml = knn_model.predict_proba(input_data)
+    x_test = input_data.reshape((input_data.shape[0], 1, input_data.shape[1]))  # 1 timestep for LSTM
+    pbdl = lstm_model.predict(x_test)  # Pass reshaped data to LSTM
+    wml = 0.45
+    wdl = 0.45
+    pb = wml * pbml + wdl * pbdl
+    pred = np.argmax(pb, axis=1)
+    return pred
 
 # Define Flask routes
 @app.route("/")
@@ -63,13 +63,12 @@ def predict():
             input_data.append(float(request.form.get("nof")))
             input_data.append(float(request.form.get("nofs")))
 
-            # Convert input to appropriate format
             data = pd.Series(input_data)
             data = data.replace({'no': 0, 'yes': 1})
-            inp = np.array(data).reshape(1, len(data))
+            inp = np.array(data).reshape(1, -1)  # Reshape to 2D (1 sample, n features) for KNN
 
-            # Get result from fusion model 
-            prediction = get_result(inp,knn_model,lstm_model) 
+            # Get result from fusion model
+            prediction = get_result(inp, knn_model, lstm_model)
 
             result = 'FAKE' if prediction else 'REAL'
         except Exception as e:

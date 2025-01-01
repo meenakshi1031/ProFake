@@ -107,23 +107,9 @@ button{
     outline: none;
 }
 .buttoncolor{
-    color: darkorange;
+    color: rgb(255, 255, 255);
 }
-.atag{
-    color: #ffffff;
-    font-family: "Poppins",sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    position:absolute;
-    right:20px ;
-    top:20px;
-    border:3px solid #ffffff;
-    border-radius: 5px;
-    text-decoration:none;
-}
-.atag>.fa{
-  color: #FF0000;
-}
+
 @media screen and (min-width: 451px) {
   .atag{
     font-size: 18px;
