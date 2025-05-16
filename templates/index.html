@@ -132,6 +132,70 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px; /* Add padding for better spacing on smaller screens */
+            }
+        
+            form {
+                width: 100%; /* Make form take full width */
+                height: auto; /* Allow height to adjust based on content */
+                padding: 20px; /* Reduce padding */
+                max-height: 90vh; /* Limit height to viewport size */
+                overflow-y: auto; /* Enable scrolling if content overflows */
+            }
+        
+            form h3 {
+                font-size: 24px; /* Reduce font size for the title */
+                line-height: 32px;
+            }
+        
+            label {
+                font-size: 14px; /* Adjust label font size */
+            }
+        
+            input, select {
+                height: 45px; /* Reduce input height */
+                font-size: 12px; /* Adjust font size */
+            }
+        
+            button {
+                padding: 12px 0; /* Reduce button padding */
+                font-size: 16px; /* Adjust font size */
+            }
+        
+            .background {
+                width: 100%;
+                height: 100%;
+                position: fixed; /* Cover full screen */
+            }
+        
+            .background .shape {
+                height: 150px; /* Reduce shape size */
+                width: 150px;
+            }
+        
+            .shape:first-child {
+                left: -100px;
+                top: 150px;
+            }
+        
+            .shape:nth-child(2) {
+                right: -60px;
+                top: 300px;
+            }
+        
+            .shape:nth-child(3) {
+                left: -100px;
+                top: 500px;
+            }
+        
+            .shape:last-child {
+                right: -60px;
+                top: 700px;
+            }
+        }
+        
     </style>
 </head>
 
@@ -182,12 +246,6 @@
     </div>
        
     </form>
-    <br>
-    <div>
-        <p>
-            @copyright
-        </p>
-    </div>
 </body>
 
 </html>
